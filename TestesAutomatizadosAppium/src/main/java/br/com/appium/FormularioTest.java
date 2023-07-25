@@ -90,5 +90,42 @@ public class FormularioTest {
 
 		driver.quit();
 	}
+	
+	@Test
+	public void deveInteragirSwitchCheckBox() throws MalformedURLException {
+		DesiredCapabilities desiredCapabilities = new DesiredCapabilities(); 
+		desiredCapabilities.setCapability("platformName", "Android");
+		desiredCapabilities.setCapability("deviceName", "emulador"); 
+		desiredCapabilities.setCapability("automationName", "uiautomator2"); 
+		desiredCapabilities.setCapability(MobileCapabilityType.APP,
+				"C:\\Users\\JN\\Documents\\MEUS PROJETOS\\Projetos\\Pasta-de-estudo\\Testes-automatizados\\TestesAutomatizadosMobileAppium\\TestesAutomatizadosAppium\\src\\main\\resources\\CTAppium_1_2.apk");
+		desiredCapabilities.setCapability("noReset", true); 
+		desiredCapabilities.setCapability("fullReset", false); 
+		
+		AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"),
+				desiredCapabilities);
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+		// Clicar formulário
+		driver.findElement(By.xpath("//android.widget.TextView[@text='Formulário']")).click();
+	
+		// Verificar se os elementos estão habilitados
+		MobileElement check = driver.findElement(MobileBy.AccessibilityId("check"));
+		MobileElement switcH = driver.findElement(MobileBy.AccessibilityId("switch"));
+		
+		Assert.assertTrue(check.getAttribute("checked").equals("false"));
+		Assert.assertTrue(switcH.getAttribute("checked").equals("true"));
+		
+		// Clicar nos elementos
+		check.click();
+		switcH.click();
+		
+		
+		// Verificar status alterados
+		Assert.assertTrue(check.getAttribute("checked").equals("true"));
+		Assert.assertTrue(switcH.getAttribute("checked").equals("false"));
+
+		driver.quit();
+	}
 
 }
