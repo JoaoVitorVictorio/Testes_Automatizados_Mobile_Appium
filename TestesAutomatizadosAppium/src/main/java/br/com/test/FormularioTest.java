@@ -1,17 +1,17 @@
 package br.com.test;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import be.com.pages.FormularioPage;
 import be.com.pages.TelaInicialPage;
+import br.com.core.BaseTest;
 import br.com.core.DriverFactory;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 
-public class FormularioTest {
+public class FormularioTest extends BaseTest{
 
 	AndroidDriver<MobileElement> driver;
 
@@ -23,11 +23,6 @@ public class FormularioTest {
 		driver = DriverFactory.getDriver();
 
 		telaInicialPage.selecionaOpcaoTelaInicial("Formulário");
-	}
-
-	@After
-	public void tearDown() {
-		DriverFactory.killDriver();
 	}
 
 	@Test
