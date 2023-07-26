@@ -1,4 +1,4 @@
-package br.com.appium;
+package br.com.test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
