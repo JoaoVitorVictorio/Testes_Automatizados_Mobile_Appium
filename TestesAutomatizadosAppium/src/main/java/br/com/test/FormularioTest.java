@@ -4,10 +4,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import be.com.pages.FormularioPage;
-import be.com.pages.TelaInicialPage;
 import br.com.core.BaseTest;
 import br.com.core.DriverFactory;
+import br.com.pages.FormularioPage;
+import br.com.pages.TelaInicialPage;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 
