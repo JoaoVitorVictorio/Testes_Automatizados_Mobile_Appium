@@ -24,5 +24,15 @@ public class AlertasPage extends BasePage{
 		clicar(By.xpath("//android.widget.Button[@text='SAIR']"));
 		
 	}
+
+	public void clicarAlertaSimples() {
+		clicar("//android.widget.TextView[@text='ALERTA SIMPLES']");
+	}
 	
+	public void clicarForaCaixa() throws InterruptedException{
+		delaySegundos(2);
+		tap(100, 150);
+	}
+
+
 }

@@ -27,7 +27,7 @@ public class DriverFactory {
 		desiredCapabilities.setCapability("deviceName", "emulador"); // Nome do dispositivo (emulador ou dispositivo real)
 		desiredCapabilities.setCapability("automationName", "uiautomator2"); // Nome da automação a ser usada (uiautomator2)
 		desiredCapabilities.setCapability(MobileCapabilityType.APP,
-				"C:\\Users\\JN\\Documents\\MEUS PROJETOS\\Projetos\\Pasta-de-estudo\\Testes-automatizados\\TestesAutomatizadosMobileAppium\\TestesAutomatizadosAppium\\src\\main\\resources\\CTAppium_1_2.apk");  // Caminho para o arquivo APK do aplicativo que será testado
+				"C:\\Users\\JN\\Documents\\MEUS PROJETOS\\Projetos\\Pasta-de-estudo\\Testes-automatizados\\TestesAutomatizadosMobileAppium\\TestesAutomatizadosAppium\\src\\main\\resources\\CTAppium_2_0.apk");  // Caminho para o arquivo APK do aplicativo que será testado
 		desiredCapabilities.setCapability("noReset", true); // Configuração para evitar reset do aplicativo antes de cada execução do teste
 		desiredCapabilities.setCapability("fullReset", false); // Configuração para evitar reset completo do aplicativo entre as execuções do teste
 
