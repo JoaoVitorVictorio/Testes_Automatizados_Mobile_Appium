@@ -6,11 +6,14 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.LongPressOptions;
+import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
 
 public class BasePage {
@@ -74,13 +77,18 @@ public class BasePage {
 		getDriver().findElement(by).sendKeys(Keys.TAB);
 	}
 	
-	public boolean existeElementoPorTexto() {
-		List<MobileElement> elementos = getDriver().findElements(By.xpath("//android.widget.TextView[@text='Pode clicar no OK ou fora da caixa para sair']"));
+	public boolean existeElementoPresente(String xpath) {
+		List<MobileElement> elementos = getDriver().findElements(By.xpath(xpath));
 		return elementos.size() > 0;
 	}
 	
 	public void tap(int x,int y){
 		new TouchAction<>(getDriver()).press(PointOption.point(x, y)).release().perform();
+	}
+	
+	public void cliqueLongo(String xpath) {
+	    WebElement element = getDriver().findElement(By.xpath(xpath));
+	    new TouchAction<>(getDriver()).longPress(LongPressOptions.longPressOptions().withElement(ElementOption.element(element))).release().perform();
 	}
     
 }

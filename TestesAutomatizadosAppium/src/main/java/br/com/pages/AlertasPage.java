@@ -29,6 +29,10 @@ public class AlertasPage extends BasePage{
 		clicar("//android.widget.TextView[@text='ALERTA SIMPLES']");
 	}
 	
+	public boolean validaCaixaPresenteNaTela() {
+		return existeElementoPresente("//android.widget.TextView[@text='Pode clicar no OK ou fora da caixa para sair']");
+	}
+	
 	public void clicarForaCaixa() throws InterruptedException{
 		delaySegundos(2);
 		tap(100, 150);
