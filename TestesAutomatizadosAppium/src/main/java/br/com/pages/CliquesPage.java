@@ -10,8 +10,12 @@ public class CliquesPage extends BasePage {
 		cliqueLongo("//*[@text='Clique Longo']");
 	}
 
-	public boolean validaCaixaPresenteNaTela() {
-		String xpath = "//android.widget.TextView[@text='Clique Longo']";
+	public void efetuarDuploClique() {
+		cliqueDuplo("Clique duplo");
+	}
+
+	public boolean validaCaixaPresenteNaTela(String texto) {
+		String xpath = "//android.widget.TextView[@text='" + texto + "']";
 		esperarElement(By.xpath(xpath), 1);
 		return existeElementoPresente(xpath);
 	}

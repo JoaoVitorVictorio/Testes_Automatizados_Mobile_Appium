@@ -90,5 +90,11 @@ public class BasePage {
 	    WebElement element = getDriver().findElement(By.xpath(xpath));
 	    new TouchAction<>(getDriver()).longPress(LongPressOptions.longPressOptions().withElement(ElementOption.element(element))).release().perform();
 	}
-    
+	
+	public void cliqueDuplo(String texto) {
+		String xpath = "//android.widget.TextView[@text='" + texto + "']";
+		esperarElement(By.xpath(xpath), 3);
+		clicar(xpath);
+		clicar(xpath);
+	}
 }

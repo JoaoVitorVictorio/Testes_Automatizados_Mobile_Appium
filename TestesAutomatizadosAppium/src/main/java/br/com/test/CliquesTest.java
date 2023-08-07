@@ -21,7 +21,13 @@ public class CliquesTest extends BaseTest {
 	@Test
 	public void deveRealizarCliqueLongo() {
 		page.efetuarCliqueLongo();
-		Assert.assertTrue(page.validaCaixaPresenteNaTela());
+		Assert.assertTrue(page.validaCaixaPresenteNaTela("Clique Longo"));
+	}
+	
+	@Test
+	public void deveRealizarDuploClique() {
+		page.efetuarDuploClique();
+		Assert.assertTrue(page.validaCaixaPresenteNaTela("Clique duplo"));
 	}
 
 }
