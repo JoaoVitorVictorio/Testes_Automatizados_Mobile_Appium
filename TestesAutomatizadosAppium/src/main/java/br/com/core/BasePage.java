@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.LongPressOptions;
@@ -76,25 +77,32 @@ public class BasePage {
 	public void tab(By by) {
 		getDriver().findElement(by).sendKeys(Keys.TAB);
 	}
-	
+
 	public boolean existeElementoPresente(String xpath) {
 		List<MobileElement> elementos = getDriver().findElements(By.xpath(xpath));
 		return elementos.size() > 0;
 	}
-	
-	public void tap(int x,int y){
+
+	public void tap(int x, int y) {
 		new TouchAction<>(getDriver()).press(PointOption.point(x, y)).release().perform();
 	}
-	
+
 	public void cliqueLongo(String xpath) {
-	    WebElement element = getDriver().findElement(By.xpath(xpath));
-	    new TouchAction<>(getDriver()).longPress(LongPressOptions.longPressOptions().withElement(ElementOption.element(element))).release().perform();
+		WebElement element = getDriver().findElement(By.xpath(xpath));
+		new TouchAction<>(getDriver())
+				.longPress(LongPressOptions.longPressOptions().withElement(ElementOption.element(element))).release()
+				.perform();
 	}
-	
+
 	public void cliqueDuplo(String texto) {
 		String xpath = "//android.widget.TextView[@text='" + texto + "']";
 		esperarElement(By.xpath(xpath), 3);
 		clicar(xpath);
 		clicar(xpath);
+	}
+
+	public WebElement scroll(String text) {
+		return getDriver().findElement(MobileBy.AndroidUIAutomator(
+				"new UiScrollable(new UiSelector())" + ".scrollIntoView(new UiSelector().text(\"" + text + "\"));"));
 	}
 }
