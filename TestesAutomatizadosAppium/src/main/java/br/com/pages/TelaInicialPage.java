@@ -9,4 +9,5 @@ public class TelaInicialPage extends BasePage {
 	public void selecionaOpcaoTelaInicial(String opcao) {
 		clicar(By.xpath("//android.widget.TextView[@text='" + opcao + "']"));
 	}
+
 }

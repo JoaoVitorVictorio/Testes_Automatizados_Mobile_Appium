@@ -2,6 +2,7 @@ package br.com.core;
 
 import static br.com.core.DriverFactory.getDriver;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -14,6 +15,7 @@ import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.LongPressOptions;
+import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
 
@@ -105,4 +107,34 @@ public class BasePage {
 		return getDriver().findElement(MobileBy.AndroidUIAutomator(
 				"new UiScrollable(new UiSelector())" + ".scrollIntoView(new UiSelector().text(\"" + text + "\"));"));
 	}
+
+	public void swipeParaOTexto(String text) {
+		new TouchAction<>(getDriver())
+				.press(PointOption.point(getDriver().manage().window().getSize().width / 2,
+						getDriver().manage().window().getSize().height / 2))
+				.moveTo(PointOption.point(0, getDriver().manage().window().getSize().height / 2)).release().perform();
+	}
+
+	public void swipeLeft(double inicio, double fim) {
+		org.openqa.selenium.Dimension screenSize = getDriver().manage().window().getSize();
+		int startY = screenSize.height / 2;
+		int endX = (int) (screenSize.width * inicio);
+		int startX = (int) (screenSize.width * fim);
+
+		new TouchAction<>(getDriver()).press(PointOption.point(startX, startY))
+				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000))).moveTo(PointOption.point(endX, startY))
+				.release().perform();
+	}
+
+	public void swipeRight(double inicio, double fim) {
+		org.openqa.selenium.Dimension screenSize = getDriver().manage().window().getSize();
+		int startY = screenSize.height / 2;
+		int startX = (int) (screenSize.width * inicio);
+		int endX = (int) (screenSize.width * fim);
+
+		new TouchAction<>(getDriver()).press(PointOption.point(startX, startY))
+				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000))).moveTo(PointOption.point(endX, startY))
+				.release().perform();
+	}
+
 }
