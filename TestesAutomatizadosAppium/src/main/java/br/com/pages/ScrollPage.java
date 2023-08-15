@@ -14,4 +14,8 @@ public class ScrollPage extends BasePage {
 		clicar(By.id("android:id/button1"));
 	}
 
+	public void descerTela() {
+		scroll(0.9, 0.1);
+	}
+
 }

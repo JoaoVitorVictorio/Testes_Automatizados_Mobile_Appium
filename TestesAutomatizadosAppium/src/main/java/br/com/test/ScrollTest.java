@@ -14,7 +14,7 @@ public class ScrollTest extends BaseTest {
 	
 	@Test
 	public void realizarScrollNaTela() throws InterruptedException {
-		page.scroll("Opção bem escondida");
+		page.descerTela();
 		
 		telaInicialPage.selecionaOpcaoTelaInicial("Opção bem escondida");
 		

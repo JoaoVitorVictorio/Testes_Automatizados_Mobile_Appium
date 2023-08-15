@@ -10,6 +10,8 @@ import br.com.test.CalculadoraTest;
 import br.com.test.CliquesTest;
 import br.com.test.FormularioTest;
 import br.com.test.ScrollTest;
+import br.com.test.SwipeElementTest;
+import br.com.test.SwipeTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({
@@ -18,7 +20,9 @@ import br.com.test.ScrollTest;
 	CalculadoraTest.class,
 	CliquesTest.class,
 	FormularioTest.class,
-	ScrollTest.class
+	ScrollTest.class,
+	SwipeTest.class,
+	SwipeElementTest.class
 })
 
 public class SuiteGeral {

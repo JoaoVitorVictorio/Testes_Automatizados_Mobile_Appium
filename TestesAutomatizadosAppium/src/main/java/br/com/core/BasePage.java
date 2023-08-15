@@ -103,10 +103,24 @@ public class BasePage {
 		clicar(xpath);
 	}
 
-	public WebElement scroll(String text) {
+	public WebElement scrollParaTexto(String text) {
 		return getDriver().findElement(MobileBy.AndroidUIAutomator(
 				"new UiScrollable(new UiSelector())" + ".scrollIntoView(new UiSelector().text(\"" + text + "\"));"));
 	}
+
+
+	public void scroll(double inicio, double fim) {
+		org.openqa.selenium.Dimension screenSize = getDriver().manage().window().getSize();
+
+		int x = screenSize.width / 2;
+		int startY = (int) (screenSize.height * inicio);
+		int endY = (int) (screenSize.height * fim);
+
+		new TouchAction<>(getDriver()).press(PointOption.point(x, startY))
+				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(500))).moveTo(PointOption.point(x, endY))
+				.release().perform();
+	}
+		
 
 	public void swipeParaOTexto(String text) {
 		new TouchAction<>(getDriver())
@@ -134,6 +148,17 @@ public class BasePage {
 
 		new TouchAction<>(getDriver()).press(PointOption.point(startX, startY))
 				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000))).moveTo(PointOption.point(endX, startY))
+				.release().perform();
+	}
+	
+	public void swipeElement(MobileElement element, double inicio, double fim) {
+		int y = element.getLocation().y + (element.getSize().height / 2);
+		int startX = (int) (element.getSize().width * inicio);
+		int endX = (int) (element.getSize().width * fim);
+		
+
+		new TouchAction<>(getDriver()).press(PointOption.point(startX, y))
+				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000))).moveTo(PointOption.point(endX, y))
 				.release().perform();
 	}
 
