@@ -108,7 +108,6 @@ public class BasePage {
 				"new UiScrollable(new UiSelector())" + ".scrollIntoView(new UiSelector().text(\"" + text + "\"));"));
 	}
 
-
 	public void scroll(double inicio, double fim) {
 		org.openqa.selenium.Dimension screenSize = getDriver().manage().window().getSize();
 
@@ -120,7 +119,6 @@ public class BasePage {
 				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(500))).moveTo(PointOption.point(x, endY))
 				.release().perform();
 	}
-		
 
 	public void swipeParaOTexto(String text) {
 		new TouchAction<>(getDriver())
@@ -150,16 +148,24 @@ public class BasePage {
 				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000))).moveTo(PointOption.point(endX, startY))
 				.release().perform();
 	}
-	
+
 	public void swipeElement(MobileElement element, double inicio, double fim) {
 		int y = element.getLocation().y + (element.getSize().height / 2);
 		int startX = (int) (element.getSize().width * inicio);
 		int endX = (int) (element.getSize().width * fim);
-		
 
 		new TouchAction<>(getDriver()).press(PointOption.point(startX, y))
 				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000))).moveTo(PointOption.point(endX, y))
 				.release().perform();
+	}
+
+	public void DragNDrop(String origem, String destino) {
+		MobileElement inicio = DriverFactory.getDriver().findElement(By.xpath("//*[@text='" + origem + "']"));
+		MobileElement fim = DriverFactory.getDriver().findElement(By.xpath("//*[@text='" + destino + "']"));
+
+		TouchAction<?> touchAction = new TouchAction<>(DriverFactory.getDriver());
+		touchAction.longPress(LongPressOptions.longPressOptions().withElement(ElementOption.element(inicio)))
+				.moveTo(ElementOption.element(fim)).release().perform();
 	}
 
 }

@@ -14,7 +14,8 @@ public class ScrollPage extends BasePage {
 		clicar(By.id("android:id/button1"));
 	}
 
-	public void descerTela() {
+	public void descerTela() throws InterruptedException {
+		delaySegundos(1);
 		scroll(0.9, 0.1);
 	}
 

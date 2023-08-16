@@ -29,7 +29,7 @@ public class SwipePage extends BasePage {
 				.findElement(By.xpath("//android.widget.TextView[@text='(+)']/.."));
 		botao.click();
 	}
-	
+
 	public void clicarBotaoMenos() {
 		MobileElement botao = DriverFactory.getDriver()
 				.findElement(By.xpath("//android.widget.TextView[@text='(-)']/.."));

@@ -8,6 +8,7 @@ import br.com.test.AbasTest;
 import br.com.test.AlertTest;
 import br.com.test.CalculadoraTest;
 import br.com.test.CliquesTest;
+import br.com.test.DragNDropTest;
 import br.com.test.FormularioTest;
 import br.com.test.ScrollTest;
 import br.com.test.SwipeElementTest;
@@ -19,6 +20,7 @@ import br.com.test.SwipeTest;
 	AlertTest.class,
 	CalculadoraTest.class,
 	CliquesTest.class,
+	DragNDropTest.class,
 	FormularioTest.class,
 	ScrollTest.class,
 	SwipeTest.class,

@@ -8,18 +8,18 @@ import br.com.pages.ScrollPage;
 import br.com.pages.TelaInicialPage;
 
 public class ScrollTest extends BaseTest {
-	
+
 	private TelaInicialPage telaInicialPage = new TelaInicialPage();
 	private ScrollPage page = new ScrollPage();
-	
+
 	@Test
 	public void realizarScrollNaTela() throws InterruptedException {
 		page.descerTela();
-		
+
 		telaInicialPage.selecionaOpcaoTelaInicial("Opção bem escondida");
-		
+
 		Assert.assertEquals("Você achou essa opção", page.getValidaMensagemSucesso());
-		
+
 		page.clicarSair();
 	}
 
