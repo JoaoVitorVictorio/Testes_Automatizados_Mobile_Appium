@@ -15,7 +15,6 @@ public class ScrollPage extends BasePage {
 	}
 
 	public void descerTela() throws InterruptedException {
-		delaySegundos(1);
 		scroll(0.9, 0.1);
 	}
 

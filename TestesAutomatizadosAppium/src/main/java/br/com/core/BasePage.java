@@ -21,9 +21,29 @@ import io.appium.java_client.touch.offset.PointOption;
 
 public class BasePage {
 
-	public void escrever(By by, String texto) {
-		getDriver().findElement(by).sendKeys(texto);
+	public void escrever(By by, String texto, boolean apagar) {
+		if (apagar) {
+			int tamanho = getDriver().findElement(by).getAttribute("value").length();
 
+			for (int i = 0; i < tamanho; i++) {
+				getDriver().findElement(by).sendKeys(Keys.BACK_SPACE);
+			}
+			getDriver().findElement(by).sendKeys(Keys.BACK_SPACE);
+			getDriver().findElement(by).sendKeys(Keys.HOME);
+		}
+		getDriver().findElement(by).sendKeys(texto);
+	}
+
+	public void escrever(By by, String texto) {
+		escrever(by, texto, false);
+	}
+
+	public void escrever(String id_campo, String texto, boolean apagar) {
+		escrever(By.id(id_campo), texto, apagar);
+	}
+
+	public void escrever(String id_campo, String texto) {
+		escrever(By.id(id_campo), texto);
 	}
 
 	public String obterTexto(By by) {
@@ -108,15 +128,15 @@ public class BasePage {
 				"new UiScrollable(new UiSelector())" + ".scrollIntoView(new UiSelector().text(\"" + text + "\"));"));
 	}
 
-	public void scroll(double inicio, double fim) {
+	public void scroll(double inicio, double fim) throws InterruptedException {
 		org.openqa.selenium.Dimension screenSize = getDriver().manage().window().getSize();
-
+		delaySegundos(3);
 		int x = screenSize.width / 2;
 		int startY = (int) (screenSize.height * inicio);
 		int endY = (int) (screenSize.height * fim);
 
 		new TouchAction<>(getDriver()).press(PointOption.point(x, startY))
-				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(500))).moveTo(PointOption.point(x, endY))
+				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000))).moveTo(PointOption.point(x, endY))
 				.release().perform();
 	}
 
