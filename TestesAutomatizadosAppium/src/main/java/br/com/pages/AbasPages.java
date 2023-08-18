@@ -11,6 +11,8 @@ public class AbasPages extends BasePage {
 	}
 
 	public void selecionarAba(String aba) {
-		clicar("//android.widget.TextView[@text='ABA " + aba + "']");
+		String xpath = "//android.widget.TextView[@text='Aba " + aba + "']";
+		esperarElement(By.xpath(xpath), 5);
+		clicar(xpath);
 	}
 }
